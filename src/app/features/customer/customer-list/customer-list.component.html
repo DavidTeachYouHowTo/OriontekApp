@@ -1,0 +1,40 @@
+<div class="card">
+    <div class="card-header">
+        <i class="fa fa-align-justify"></i> Listado de clientes
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <button class="btn btn-outline-primary" routerLink="/customer/create">Agregar</button>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Teléfono</th>
+                    <th>Email</th>
+                    <th>Compañia</th>
+                    <th>Activo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of customers">
+                    <td>{{item.name}} {{item.lastName}}</td>
+                    <td>{{item.phoneNumber}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.company.name}}</td>
+                    <td>
+                        <span *ngIf="item.isActive" class="badge alert-success">Activo</span>
+                        <span *ngIf="!item.isActive" class="badge alert-danger">Inactivo</span>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-success mx-2"
+                            [routerLink]='["/customer/edit/" + item.id]'>Editar</button>
+                        <button class="btn btn-outline-info"
+                            [routerLink]='["/address/list/" + item.id]'>Direcciones</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

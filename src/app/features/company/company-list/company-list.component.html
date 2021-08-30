@@ -1,0 +1,36 @@
+<div class="card">
+    <div class="card-header">
+        <i class="fa fa-align-justify"></i> Listado de compañias
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <button class="btn btn-outline-primary" routerLink="/company/create">Agregar</button>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Compañia
+                    </th>
+                    <th>
+                        Activa
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of companies">
+                    <td>{{item.name}}</td>
+                    <td>
+                        <span *ngIf="item.isActive" class="badge alert-success">Activo</span>
+                        <span *ngIf="!item.isActive" class="badge alert-danger">Inactivo</span>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-success"
+                            [routerLink]='["/company/edit/" + item.id]'>Editar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

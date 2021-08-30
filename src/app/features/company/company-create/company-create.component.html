@@ -1,0 +1,31 @@
+<form class="form-horizontal" (ngSubmit)="onSubmit()" [formGroup]="companyForm">
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-align-justify"></i>
+            <strong>Agregar compañia</strong>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="control-label required">Compañia</label>
+                            <input type="text" id="compañia" name="compañia" formControlName="name" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && formControl.name.errors }" />
+                            <div *ngIf="submitted && formControl.name.errors" class="invalid-feedback">
+                                <div *ngIf="formControl.name.errors.required">El nombre de la compañia es requerido
+                                </div>
+                                <div *ngIf="formControl.name.errors?.maxlength">El nombre de la compañia debe ser menor
+                                    a 50 carácteres</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-outline-primary mx-2">Guardar</button>
+            <button class="btn btn-outline-danger" (click)="backToList()">Volver al listado</button>
+        </div>
+    </div>
+</form>

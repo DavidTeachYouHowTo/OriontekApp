@@ -1,0 +1,43 @@
+<div class="card">
+    <div class="card-header">
+        <i class="fa fa-align-justify"></i> Listado de direcciones del cliente: {{customerName}}
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <button class="btn btn-outline-primary mx-2"
+                [routerLink]='["/address/create/" + customerId]'>Agregar</button>
+            <button class="btn btn-outline-danger" (click)="backToList()">Volver al listado</button>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>País</th>
+                    <th>Ciudad</th>
+                    <th>Dirección</th>
+                    <th>Estado</th>
+                    <th>Código Postal</th>
+                    <th>Activo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of customerAddress">
+                    <td>{{item.country}}</td>
+                    <td>{{item.city}}</td>
+                    <td>{{item.address}}</td>
+                    <td>{{item.countryState}}</td>
+                    <td>{{item.postalCode}}</td>
+                    <td>
+                        <span *ngIf="item.isActive" class="badge alert-success">Activo</span>
+                        <span *ngIf="!item.isActive" class="badge alert-danger">Inactivo</span>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-success mx-2"
+                            [routerLink]='["/address/edit/" + item.id]'>Editar</button>
+                        <button class="btn btn-outline-danger" (click)=removeAddress(item.id)>Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

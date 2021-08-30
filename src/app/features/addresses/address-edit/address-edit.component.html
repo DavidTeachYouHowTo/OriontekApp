@@ -1,0 +1,79 @@
+<form class="form-horizontal" (ngSubmit)="onSubmit()" [formGroup]="addressForm">
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-align-justify"></i>
+            <strong>Editar dirección para {{customerName}}</strong>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="control-label required">Country</label>
+                            <input type="text" id="country" name="country" formControlName="country"
+                                class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && formControl.country.errors }" />
+                            <div *ngIf="submitted && formControl.country.errors" class="invalid-feedback">
+                                <div *ngIf="formControl.country.errors.required">El nombre del país es requerido</div>
+                                <div *ngIf="formControl.country.errors?.maxlength">El nombre del país debe ser menor a
+                                    100 carácteres</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label required">Ciudad</label>
+                            <input type="text" id="city" name="city" formControlName="city" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && formControl.city.errors }" />
+                            <div *ngIf="submitted && formControl.city.errors" class="invalid-feedback">
+                                <div *ngIf="formControl.city.errors.required">El nombre de la ciudad es requerido
+                                </div>
+                                <div *ngIf="formControl.city.errors?.maxlength">El nombre de la ciudad debe ser
+                                    menor a 100 carácteres</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="control-label required">Dirección</label>
+                            <input type="text" id="address" name="address" formControlName="address"
+                                class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && formControl.address.errors }" />
+                            <div *ngIf="submitted && formControl.address.errors" class="invalid-feedback">
+                                <div *ngIf="formControl.address.errors.required">La dirección es requerido</div>
+                                <div *ngIf="formControl.address.errors?.maxlength">La dirección debe ser menor a 150
+                                    carácteres</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label required">Estado</label>
+                            <input type="text" id="countryState" name="countryState" formControlName="countryState"
+                                class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && formControl.countryState.errors }" />
+                            <div *ngIf="submitted && formControl.countryState.errors" class="invalid-feedback">
+                                <div *ngIf="formControl.countryState.errors.required">El estado es requerido
+                                </div>
+                                <div *ngIf="formControl.countryState.errors?.maxlength">El nombre del estado debe ser
+                                    menor a 100 carácteres</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label required">Código Postal</label>
+                            <input type="text" id="postalCode" name="postalCode" formControlName="postalCode"
+                                class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && formControl.postalCode.errors }" />
+                            <div *ngIf="submitted && formControl.postalCode.errors" class="invalid-feedback">
+                                <div *ngIf="formControl.postalCode.errors.required">El código postal es requerido
+                                </div>
+                                <div *ngIf="formControl.postalCode.errors?.maxlength">El código postal debe ser menor a
+                                    50 carácteres</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-outline-primary mx-2">Guardar</button>
+            <button class="btn btn-outline-danger" (click)="backToList()">Volver al listado</button>
+        </div>
+    </div>
+</form>
